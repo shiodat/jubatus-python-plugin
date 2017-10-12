@@ -1,0 +1,49 @@
+{
+  "converter" : {
+    "string_filter_types" : {},
+    "string_filter_rules" : [],
+    "num_filter_types" : {},
+    "num_filter_rules" : [],
+    "string_types": {},
+    "string_rules": [
+      { "key" : "*", "type" : "str", "sample_weight" : "bin", "global_weight" : "bin" }
+    ],
+    "num_types" : {
+      "ma1": {
+        "method": "dynamic",
+        "path": "libpython_bridge.so",
+        "function": "num_feature",
+        "module": "moving_average",
+        "class": "MovingAverage",
+        "lags": "1"
+      },
+      "ma3": {
+        "method": "dynamic",
+        "path": "libpython_bridge.so",
+        "function": "num_feature",
+        "module": "moving_average",
+        "class": "MovingAverage",
+        "lags": "3"
+      },
+      "ma7": {
+        "method": "dynamic",
+        "path": "libpython_bridge.so",
+        "function": "num_feature",
+        "module": "moving_average",
+        "class": "MovingAverage",
+        "lags": "7"
+      }
+    },
+    "num_rules" : [
+        { "key" : "*", "type" : "num"},
+        { "key" : "*", "type" : "ma1" },
+        { "key" : "*", "type" : "ma3" },
+        { "key" : "*", "type" : "ma7" }
+    ]
+  },
+  "parameter" : {
+    "sensitivity": 1.0,
+    "regularization_weight" : 1.0
+  },
+  "method": "AROW"
+}
