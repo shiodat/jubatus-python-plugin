@@ -1,0 +1,30 @@
+{
+  "converter" : {
+    "string_filter_types" : {},
+    "string_filter_rules" : [],
+    "num_filter_types" : {},
+    "num_filter_rules" : [],
+    "string_types": {},
+    "string_rules": [
+      { "key" : "*", "type" : "str", "sample_weight" : "bin", "global_weight" : "bin" }
+    ],
+    "num_types" : {
+      "ar": {
+        "method": "dynamic",
+        "path": "libpython_bridge.so",
+        "function": "num_feature",
+        "module": "ar",
+        "class": "AutoRegressive",
+        "lags": "12"
+      }
+    },
+    "num_rules" : [
+        { "key" : "*", "type" : "ar"}
+    ]
+  },
+  "parameter" : {
+    "sensitivity": 1.0,
+    "regularization_weight" : 1.0
+  },
+  "method": "AROW"
+}

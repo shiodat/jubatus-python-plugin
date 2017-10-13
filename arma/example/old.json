@@ -1,0 +1,30 @@
+{
+  "converter" : {
+    "string_filter_types" : {},
+    "string_filter_rules" : [],
+    "num_filter_types" : {},
+    "num_filter_rules" : [],
+    "string_types": {},
+    "string_rules": [
+      { "key" : "*", "type" : "str", "sample_weight" : "bin", "global_weight" : "bin" }
+    ],
+    "num_types" : {
+      "moving_average": {
+        "method": "dynamic",
+        "path": "libpython_bridge.so",
+        "function": "num_feature",
+        "module": "moving_average",
+        "class": "MovingAverage",
+        "lags": "7"
+      }
+    },
+    "num_rules" : [
+        { "key" : "*", "type" : "moving_average"}
+    ]
+  },
+  "parameter" : {
+    "sensitivity": 1.0,
+    "regularization_weight" : 1.0
+  },
+  "method": "AROW"
+}
